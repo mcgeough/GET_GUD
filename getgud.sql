@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2023 at 08:14 AM
+-- Generation Time: Apr 20, 2023 at 10:18 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -28,26 +28,26 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `game` (
+  `id` int(11) NOT NULL,
   `title` varchar(20) NOT NULL,
   `genre` varchar(10) NOT NULL,
   `ageRating` varchar(3) NOT NULL,
   `price` double NOT NULL,
   `info` varchar(30) NOT NULL,
-  `platform` varchar(15) NOT NULL,
-  `id` int(11) NOT NULL
+  `platform` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `game`
 --
 
-INSERT INTO `game` (`title`, `genre`, `ageRating`, `price`, `info`, `platform`, `id`) VALUES
-('Animal Crossing: New', 'Life simul', '3+', 49.99, 'Create your own island paradis', 'Nintendo Switch', 6),
-('Demon\'s Souls', 'Action RPG', '16+', 69.99, 'Experience the remake of the c', 'PlayStation 5', 2),
-('Forza Horizon 5', 'Racing', '12+', 59.99, 'Race across Mexico in the late', 'Xbox Series S', 4),
-('Halo Infinite', 'First-pers', '16+', 59.99, 'Join Master Chief on a new adv', 'Xbox Series S', 3),
-('Spider-Man: Miles Mo', 'Action', '12+', 49.99, 'Swing through New York City as', 'PlayStation 5', 1),
-('The Legend of Zelda:', 'Action-adv', '12+', 59.99, 'Explore the vast open world of', 'Nintendo Switch', 5);
+INSERT INTO `game` (`id`, `title`, `genre`, `ageRating`, `price`, `info`, `platform`) VALUES
+(1, 'Spider-Man: Miles Mo', 'Action', '12+', 49.99, 'Swing through New York City as', 'PlayStation 5'),
+(2, 'Demon\'s Souls', 'Action RPG', '16+', 69.99, 'Experience the remake of the c', 'PlayStation 5'),
+(3, 'Halo Infinite', 'First-pers', '16+', 59.99, 'Join Master Chief on a new adv', 'Xbox Series S'),
+(4, 'Forza Horizon 5', 'Racing', '12+', 59.99, 'Race across Mexico in the late', 'Xbox Series S'),
+(5, 'The Legend of Zelda:', 'Action-adv', '12+', 59.99, 'Explore the vast open world of', 'Nintendo Switch'),
+(6, 'Animal Crossing: New', 'Life simul', '3+', 49.99, 'Create your own island paradis', 'Nintendo Switch');
 
 -- --------------------------------------------------------
 
@@ -83,6 +83,7 @@ INSERT INTO `game_barter` (`Barter_id`, `user_id`, `username`, `gameToTrade`, `w
 --
 
 CREATE TABLE `lfg` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `gameTitle` varchar(20) NOT NULL,
   `platform` varchar(10) NOT NULL,
@@ -96,15 +97,15 @@ CREATE TABLE `lfg` (
 -- Dumping data for table `lfg`
 --
 
-INSERT INTO `lfg` (`user_id`, `gameTitle`, `platform`, `haveMic`, `language`, `region`, `info`) VALUES
-(1, 'Fortnite', 'Xbox', 1, 'English', 'NA West', 'Looking for squad to play competitive'),
-(2, 'Call of Duty: Warzon', 'PlayStatio', 0, 'Spanish', 'NA East', 'Need a squad for casual play'),
-(3, 'Apex Legends', 'PC', 1, 'French', 'EU', 'Looking for duo to push ranks'),
-(4, 'Minecraft', 'Nintendo S', 1, 'English', 'NA East', 'Looking for friends to play survival'),
-(5, 'Overwatch', 'Xbox', 1, 'English', 'NA West', 'Looking for group to play quick play'),
-(6, 'Valorant', 'PC', 1, 'German', 'EU', 'Need a team for ranked play'),
-(7, 'FIFA 22', 'PlayStatio', 0, 'English', 'NA East', 'Looking for someone to play co-op with'),
-(8, 'Rocket League', 'PC', 1, 'English', 'EU', 'Need a teammate for 2v2 ranked play');
+INSERT INTO `lfg` (`id`, `user_id`, `gameTitle`, `platform`, `haveMic`, `language`, `region`, `info`) VALUES
+(1, 1, 'Fortnite', 'Xbox', 1, 'English', 'NA West', 'Looking for squad to play competitive'),
+(2, 2, 'Call of Duty: Warzon', 'PlayStatio', 0, 'Spanish', 'NA East', 'Need a squad for casual play'),
+(3, 3, 'Apex Legends', 'PC', 1, 'French', 'EU', 'Looking for duo to push ranks'),
+(4, 6, 'Valorant', 'PC', 1, 'German', 'EU', 'Need a team for ranked play'),
+(5, 4, 'Minecraft', 'Nintendo S', 1, 'English', 'NA East', 'Looking for friends to play survival'),
+(6, 5, 'Overwatch', 'Xbox', 1, 'English', 'NA West', 'Looking for group to play quick play'),
+(7, 8, 'Rocket League', 'PC', 1, 'English', 'EU', 'Need a teammate for 2v2 ranked play'),
+(8, 7, 'FIFA 22', 'PlayStatio', 0, 'English', 'NA East', 'Looking for someone to play co-op with');
 
 -- --------------------------------------------------------
 
@@ -170,20 +171,24 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `firstName`, `l
 -- Indexes for table `game`
 --
 ALTER TABLE `game`
-  ADD PRIMARY KEY (`title`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `title` (`title`);
 
 --
 -- Indexes for table `game_barter`
 --
 ALTER TABLE `game_barter`
   ADD PRIMARY KEY (`Barter_id`),
+  ADD UNIQUE KEY `gameToTrade` (`gameToTrade`),
+  ADD UNIQUE KEY `wanted_game` (`wanted_game`),
   ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `lfg`
 --
 ALTER TABLE `lfg`
-  ADD PRIMARY KEY (`user_id`),
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
   ADD KEY `lfg_ibfk_1` (`gameTitle`);
 
 --
@@ -205,6 +210,13 @@ ALTER TABLE `users`
 --
 
 --
+-- Constraints for table `game`
+--
+ALTER TABLE `game`
+  ADD CONSTRAINT `game_ibfk_1` FOREIGN KEY (`title`) REFERENCES `game_barter` (`gameToTrade`),
+  ADD CONSTRAINT `game_ibfk_2` FOREIGN KEY (`title`) REFERENCES `game_barter` (`wanted_game`);
+
+--
 -- Constraints for table `game_barter`
 --
 ALTER TABLE `game_barter`
@@ -215,6 +227,12 @@ ALTER TABLE `game_barter`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `lfg` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
