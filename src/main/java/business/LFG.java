@@ -12,6 +12,7 @@ import java.util.Objects;
  */
 public class LFG {
 
+    private int id;
     private int user_id;
     private String gameTitle;
     private String platform;
@@ -20,7 +21,9 @@ public class LFG {
     private String region;
     private String info;
 
-    public LFG(int user_id, String gameTitle, String platform, boolean haveMic, String language, String region, String info) {
+    
+    public LFG(int id, int user_id, String gameTitle, String platform, boolean haveMic, String language, String region, String info) {
+        this.id = id;
         this.user_id = user_id;
         this.gameTitle = gameTitle;
         this.platform = platform;
@@ -28,6 +31,14 @@ public class LFG {
         this.language = language;
         this.region = region;
         this.info = info;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getUser_id() {
@@ -88,14 +99,15 @@ public class LFG {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + this.user_id;
-        hash = 97 * hash + Objects.hashCode(this.gameTitle);
-        hash = 97 * hash + Objects.hashCode(this.platform);
-        hash = 97 * hash + (this.haveMic ? 1 : 0);
-        hash = 97 * hash + Objects.hashCode(this.language);
-        hash = 97 * hash + Objects.hashCode(this.region);
-        hash = 97 * hash + Objects.hashCode(this.info);
+        int hash = 5;
+        hash = 53 * hash + this.id;
+        hash = 53 * hash + this.user_id;
+        hash = 53 * hash + Objects.hashCode(this.gameTitle);
+        hash = 53 * hash + Objects.hashCode(this.platform);
+        hash = 53 * hash + (this.haveMic ? 1 : 0);
+        hash = 53 * hash + Objects.hashCode(this.language);
+        hash = 53 * hash + Objects.hashCode(this.region);
+        hash = 53 * hash + Objects.hashCode(this.info);
         return hash;
     }
 
@@ -111,6 +123,9 @@ public class LFG {
             return false;
         }
         final LFG other = (LFG) obj;
+        if (this.id != other.id) {
+            return false;
+        }
         if (this.user_id != other.user_id) {
             return false;
         }
@@ -134,7 +149,7 @@ public class LFG {
 
     @Override
     public String toString() {
-        return "LFG{" + "user_id=" + user_id + ", gameTitle=" + gameTitle + ", platform=" + platform + ", haveMic=" + haveMic + ", language=" + language + ", region=" + region + ", info=" + info + '}';
+        return "LFG{" + "id=" + id + ", user_id=" + user_id + ", gameTitle=" + gameTitle + ", platform=" + platform + ", haveMic=" + haveMic + ", language=" + language + ", region=" + region + ", info=" + info + '}';
     }
 
 }
