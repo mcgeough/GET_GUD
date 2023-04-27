@@ -6,17 +6,10 @@ package commands;
 
 import business.User;
 import daos.UserDao;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author mcgeo
- */
 public class RegisterCommand implements Command {
 
     private HttpServletRequest request;
@@ -27,29 +20,25 @@ public class RegisterCommand implements Command {
         this.response = response;
     }
 
-    @Override
     public String execute() {
         String forwardToJsp = "index.jsp";
         HttpSession session = request.getSession(true);
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        String firstname = request.getParameter("firstname");
-        String lastname = request.getParameter("lastname");
-        int isCritic = Integer.getInteger(request.getParameter("isCritic"));
-        int isAdmin = Integer.getInteger(request.getParameter("isAdmin"));
+        String uname = request.getParameter("username");
+        String pword = request.getParameter("password");
+        String first = request.getParameter("fName");
+        String last = request.getParameter("lName");
 
-        if (username != null && password != null && !username.isEmpty() && !password.isEmpty() && firstname != null && !lastname.isEmpty() && !lastname.isEmpty()) {
-            UserDao userDao = new UserDao("getgud");
-            int id = userDao.addUser(username, password, email, firstname, lastname, isCritic, isAdmin);
+        if (uname != null && pword != null && !uname.isEmpty() && !pword.isEmpty() && first != null && !first.isEmpty() && last != null && !last.isEmpty()) {
+            UserDao userDao = new UserDao("user_database");
+            int id = userDao.addUser(uname, pword, first, last);
             if (id == -1) {
                 forwardToJsp = "error.jsp";
                 String error = "This user could not be added. Please <a href=\"register.jsp\">try again.</a>";
                 session.setAttribute("errorMessage", error);
             } else {
                 forwardToJsp = "loginSuccessful.jsp";
-                session.setAttribute("username", username);
-                User u = new User(id, username, password, email, firstname, lastname, isCritic, isAdmin);
+                session.setAttribute("username", uname);
+                User u = new User(id, first, last, uname, pword);
                 session.setAttribute("user", u);
                 String msg = "Registration successful, you are now logged in!";
                 session.setAttribute("msg", msg);
@@ -60,7 +49,5 @@ public class RegisterCommand implements Command {
             session.setAttribute("errorMessage", error);
         }
         return forwardToJsp;
-
     }
-
 }

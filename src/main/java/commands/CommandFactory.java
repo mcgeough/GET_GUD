@@ -14,12 +14,15 @@ public class CommandFactory {
         Command c = null;
         if (action != null) {
             switch (action) {
-                case "register":
-                    c = new RegisterCommand(request, response);
                 case "login":
                     c = new LoginCommand(request, response);
-
-                
+                    break;
+                case "register":
+                    c = new RegisterCommand(request, response);
+                    break;
+                default:
+                    String error = "No such action defined for this application. Please try again.";
+                    c = new ErrorCommand(error, request);
             }
         } else {
             String error = "No action supplied. Please try again.";

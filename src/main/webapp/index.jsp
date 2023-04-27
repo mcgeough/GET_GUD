@@ -62,7 +62,7 @@
                 <div class="card col-sm-4 card">
                     <img class="card-img-top" src="css/images/game1.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">Game Barter</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                     </div>
                     <div class="card-footer">
@@ -72,7 +72,7 @@
                 <div class="card col-sm-4 card">
                     <img class="card-img-top" src="css/images/game2.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">LFG</h5>
                         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
                     </div>
                     <div class="card-footer">
@@ -82,7 +82,7 @@
                 <div class="card col-sm-4 card">
                     <img class="card-img-top" src="css/images/game3.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">Reviews</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                     </div>
                     <div class="card-footer">

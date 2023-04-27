@@ -33,26 +33,26 @@
                                         <div class="text-center">
                                             <img src="css/images/game.jpg"
                                                  style="width: 350px;" alt="logo">
-                                            <h4 class="mt-1 mb-5 pb-1">Jet2Go Airlines</h4>
+                                            <h4 class="mt-1 mb-5 pb-1">GetGud Games</h4>
                                         </div>
 
                                         <form action="controller" method="post">
                                             <p>Please login to your account</p>
 
                                             <div class="form-outline mb-4">
-                                                <label class="form-label" for="form2Example11">Username</label>
-                                                <input type="username" id="form2Example11" name="username" class="form-control"
+                                                <label>Username</label>
+                                                <input type="username" name="username"
                                                        placeholder="username" required/>
                                             </div>
 
-                                            <div class="form-outline mb-4">
-                                                <label class="form-label" for="form2Example22">Password</label>
-                                                <input type="password" id="form2Example22" name="password" class="form-control"
+                                            <div>
+                                                <label>Password</label>
+                                                <input type="password"  name="password" 
                                                        placeholder="password" required/>
                                             </div>
                                             </br>
                                             <strong>
-                                                <div class="text-center pt-1 mb-5 pb-1">
+                                                <div>
                                                     <button class="btn btn-primary btn-block fa-lg mb-3" type="submit">Login
                                                     </button>
                                                     <input type="hidden" name ="action" value="login"/>

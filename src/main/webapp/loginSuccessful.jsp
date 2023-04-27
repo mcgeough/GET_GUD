@@ -1,17 +1,27 @@
-<%-- 
-    Document   : loginSuccessful
-    Created on : 22-Mar-2023, 22:39:48
-    Author     : mcgeo
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Success</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%
+            String username = (String) session.getAttribute("username");
+            if(username != null){
+                String msg = (String) session.getAttribute("msg");
+                if(msg != null){
+                    out.println("<div>" + msg + "</div>");
+                    session.removeAttribute("msg");
+                }
+        %>
+        <div>Hi there, <%=username%>!</div>
+        <%
+            }else{
+        %>
+        <div>Sorry, this page is only for logged-in users. Please <a href="login.jsp">login</a> to continue.
+        <%
+            }
+        %>
     </body>
 </html>

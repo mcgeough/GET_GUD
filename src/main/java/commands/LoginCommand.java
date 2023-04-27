@@ -4,7 +4,6 @@
  */
 package commands;
 
-import business.Cart;
 import business.User;
 import daos.UserDao;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +20,7 @@ public class LoginCommand implements Command {
         this.response = response;
     }
 
+    @Override
     public String execute() {
         String forwardToJsp = "index.jsp";
         HttpSession session = request.getSession(true);
@@ -28,17 +28,15 @@ public class LoginCommand implements Command {
         String password = request.getParameter("password");
 
         if (username != null && password != null && !username.isEmpty() && !password.isEmpty()) {
-            UserDao userDao = new UserDao("getgud");
+            UserDao userDao = new UserDao("user_database");
             User u = userDao.findUserByUsernamePassword(username, password);
             if (u == null) {
                 forwardToJsp = "error.jsp";
                 String error = "Incorrect credentials supplied. Please <a href=\"login.jsp\">try again.</a>";
                 session.setAttribute("errorMessage", error);
             } else {
-                Cart c = new Cart();
-                forwardToJsp = "showGames.jsp";
+                forwardToJsp = "index.jsp";
                 session.setAttribute("user", u);
-                session.setAttribute("cart", c);
                 session.setAttribute("success", "You're all set. Browse the latest titles.");
 
             }
