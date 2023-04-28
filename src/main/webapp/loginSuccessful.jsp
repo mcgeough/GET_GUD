@@ -15,11 +15,11 @@
                     session.removeAttribute("msg");
                 }
         %>
-        <div>Hi there, <%=username%>!</div>
+        <div><%=username%> : logged in!</div>
         <%
             }else{
         %>
-        <div>Sorry, this page is only for logged-in users. Please <a href="login.jsp">login</a> to continue.
+        <div>Only logged in users can access this page. Please <a href="login.jsp">login</a> to continue.
         <%
             }
         %>
