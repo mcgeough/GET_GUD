@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/styles.css">
-
         <title>Login</title>
     </head>
     <body> 
@@ -31,8 +30,7 @@
                                 <div class="col-lg-6">
                                     <div class="card-body p-md-5 mx-md-4">
                                         <div class="text-center">
-                                            <img src="css/images/game.jpg"
-                                                 style="width: 350px;" alt="logo">
+                                            <img src="css/images/game.jpg" style="width: 350px;" alt="logo">
                                             <h4 class="mt-1 mb-5 pb-1">GetGud Games</h4>
                                         </div>
 
@@ -89,5 +87,6 @@
                 </div>
         </section>
     </strong>
+    <jsp:include page="footer.html" />
 </body>
 </html>
