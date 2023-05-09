@@ -45,7 +45,7 @@ CREATE TABLE `game` (
 --
 
 CREATE TABLE `game_barter` (
-  `Barter_id` int(11) NOT NULL,
+  `barter_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `gameToTrade` varchar(20) NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE `lfg` (
 
 CREATE TABLE `reviews` (
   `id` int(11) NOT NULL,
-  `Description` varchar(200) NOT NULL,
+  `description` varchar(200) NOT NULL,
   `gameTitle` varchar(30) NOT NULL,
   `Rating` decimal(10,0) NOT NULL,
   `user_id` int(11) NOT NULL
@@ -90,13 +90,13 @@ CREATE TABLE `reviews` (
 --
 
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(10) NOT NULL,
   `email` varchar(20) NOT NULL,
   `firstName` varchar(20) DEFAULT NULL,
   `lastName` varchar(30) DEFAULT NULL,
-  `D.o.B` date DEFAULT NULL,
+  `dob` date DEFAULT NULL,
   `isCritic` tinyint(1) DEFAULT NULL,
   `isAdmin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -116,7 +116,7 @@ ALTER TABLE `game`
 -- Indexes for table `game_barter`
 --
 ALTER TABLE `game_barter`
-  ADD PRIMARY KEY (`Barter_id`),
+  ADD PRIMARY KEY (`barter_id`),
   ADD KEY `user_id` (`user_id`);
 
 --

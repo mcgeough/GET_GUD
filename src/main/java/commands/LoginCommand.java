@@ -28,7 +28,7 @@ public class LoginCommand implements Command {
         String password = request.getParameter("password");
 
         if (username != null && password != null && !username.isEmpty() && !password.isEmpty()) {
-            UserDao userDao = new UserDao("user_database");
+            UserDao userDao = new UserDao("getgud");
             User u = userDao.findUserByUsernamePassword(username, password);
             if (u == null) {
                 forwardToJsp = "error.jsp";

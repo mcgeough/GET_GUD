@@ -45,22 +45,48 @@
                                                 <input type="password"  name="password" 
                                                        placeholder="password" required/>
                                             </div>
-                                            <div>
+
+                                            <div class="form-outline mb-4">
+                                                <label>Email</label>
+                                                <input type="email"  name="email" 
+                                                       placeholder="email" required/>
+                                            </div>
+
+                                            <div class="form-outline mb-4">
                                                 <label>First Name</label>
-                                                <input type="text"  name="fName" 
+                                                <input type="text"  name="firstName" 
                                                        placeholder="first name" required/>
                                             </div>
                                             <div class="form-outline mb-4">
                                                 <label>Last Name</label>
-                                                <input type="text"  name="lName" 
+                                                <input type="text"  name="lastName" 
                                                        placeholder="last name" required/>
                                             </div>
-                                            </br>
-                                            <div>
-                                                <button class="btn btn-primary btn-block fa-lg mb-3" type="submit">Register
-                                                </button>
-                                                <input type="hidden" name ="action" value="register"/>
+                                            <div class="form-outline mb-4">
+                                                <label>Date of Birth</label>
+                                                <input type="date"  name="dob" 
+                                                       placeholder="Date of birth" required/>
                                             </div>
+                                            <div class="form-outline mb-4">
+                                                <label>Do you want to become a verified critic?</label></br>
+                                                <select name="critic">
+                                                    <option value="0">No</option>
+                                                    <option value="1">Yes</option>
+                                                </select>
+                                                </br>
+                                            </div>
+                                            <div class="form-outline mb-4">
+                                                <label>Are you an admin?</label>
+                                                <select name="admin">
+                                                    <option value="0">No</option>
+                                                    <option value="1">Yes</option>
+                                                </select>
+                                                </br>
+                                                <div class="form-outline mb-4">
+                                                    <button class="btn btn-primary btn-block fa-lg mb-3" type="submit">Register
+                                                    </button>
+                                                    <input type="hidden" name ="action" value="register"/>
+                                                </div>
                                         </form>
                                         <strong>
                                             <a class="text-muted" href="#!">Forgot password?</a>
@@ -77,6 +103,6 @@
                     </div>
                 </div>
         </section>
-        <jsp:include page="footer.html" />
+        <jsp:include page="footer.jsp" />
     </body>
 </html>

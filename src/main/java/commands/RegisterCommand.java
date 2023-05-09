@@ -20,17 +20,30 @@ public class RegisterCommand implements Command {
         this.response = response;
     }
 
+    @Override
     public String execute() {
         String forwardToJsp = "index.jsp";
         HttpSession session = request.getSession(true);
         String uname = request.getParameter("username");
+        System.out.println(uname);
         String pword = request.getParameter("password");
-        String first = request.getParameter("fName");
-        String last = request.getParameter("lName");
+        System.out.println(pword);
+        String mail = request.getParameter("email");
+        System.out.println(mail);
+        String first = request.getParameter("firstName");
+        System.out.println(first);
+        String last = request.getParameter("lastName");
+        System.out.println(last);
+        String dob = request.getParameter("dob");
+        System.out.println(dob);
+        int isCrit = Integer.valueOf(request.getParameter("critic"));
+        System.out.println(isCrit);
+        int isAd = Integer.valueOf(request.getParameter("admin"));
+        System.out.println(isAd);
 
         if (uname != null && pword != null && !uname.isEmpty() && !pword.isEmpty() && first != null && !first.isEmpty() && last != null && !last.isEmpty()) {
-            UserDao userDao = new UserDao("user_database");
-            int id = userDao.addUser(uname, pword, first, last);
+            UserDao userDao = new UserDao("getgud");
+            int id = userDao.addUser(uname, pword, mail, first, last, dob, isCrit, isAd);
             if (id == -1) {
                 forwardToJsp = "error.jsp";
                 String error = "This user could not be added. Please <a href=\"register.jsp\">try again.</a>";
@@ -38,7 +51,7 @@ public class RegisterCommand implements Command {
             } else {
                 forwardToJsp = "loginSuccessful.jsp";
                 session.setAttribute("username", uname);
-                User u = new User(id, first, last, uname, pword);
+                User u = new User(id, uname, pword, mail, first, last, dob, isCrit, isAd);
                 session.setAttribute("user", u);
                 String msg = "Registration successful, you are now logged in!";
                 session.setAttribute("msg", msg);

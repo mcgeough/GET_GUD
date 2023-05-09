@@ -26,18 +26,22 @@ public class UserDao extends Dao implements UserDaoInterface {
             //Get connection object using the methods in the super class (Dao.java)...
             con = this.getConnection();
 
-            String query = "SELECT * FROM USER";
+            String query = "SELECT * FROM users";
             ps = con.prepareStatement(query);
 
             //Using a PreparedStatement to execute SQL...
             rs = ps.executeQuery();
             while (rs.next()) {
-                int userId = rs.getInt("ID");
-                String username = rs.getString("USERNAME");
-                String password = rs.getString("PASSWORD");
-                String lastname = rs.getString("LAST_NAME");
-                String firstname = rs.getString("FIRST_NAME");
-                User u = new User(userId, firstname, lastname, username, password);
+                int id = rs.getInt("user_id");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                String firstname = rs.getString("firstName");
+                String lastname = rs.getString("lastName");
+                String dob = rs.getString("dob");
+                int isCritic = rs.getInt("isCritic");
+                int isAdmin = rs.getInt("isAdmin");
+                User u = new User(id, username, password, email, firstname, lastname, dob, isCritic, isAdmin);
                 users.add(u);
             }
         } catch (SQLException e) {
@@ -69,19 +73,23 @@ public class UserDao extends Dao implements UserDaoInterface {
         try {
             con = this.getConnection();
 
-            String query = "SELECT * FROM USER WHERE USERNAME = ? AND PASSWORD = ?";
+            String query = "SELECT * FROM users WHERE username = ? AND password = ?";
             ps = con.prepareStatement(query);
             ps.setString(1, uname);
             ps.setString(2, pword);
 
             rs = ps.executeQuery();
             if (rs.next()) {
-                int userId = rs.getInt("ID");
-                String username = rs.getString("USERNAME");
-                String password = rs.getString("PASSWORD");
-                String lastname = rs.getString("LAST_NAME");
-                String firstname = rs.getString("FIRST_NAME");
-                u = new User(userId, firstname, lastname, username, password);
+                int id = rs.getInt("user_id");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                String firstname = rs.getString("firstName");
+                String lastname = rs.getString("lastName");
+                String dob = rs.getString("dob");
+                int isCritic = rs.getInt("isCritic");
+                int isAdmin = rs.getInt("isAdmin");
+                u = new User(id, username, password, email, firstname, lastname, dob, isCritic, isAdmin);
             }
         } catch (SQLException e) {
             System.out.println("An error occurred in the findUserByUsernamePassword() method: " + e.getMessage());
@@ -112,18 +120,22 @@ public class UserDao extends Dao implements UserDaoInterface {
         try {
             con = this.getConnection();
 
-            String query = "SELECT * FROM USER WHERE ID = ?";
+            String query = "SELECT * FROM users WHERE user_id = ?";
             ps = con.prepareStatement(query);
             ps.setInt(1, id);
 
             rs = ps.executeQuery();
             if (rs.next()) {
-                int userId = rs.getInt("ID");
-                String username = rs.getString("USERNAME");
-                String password = rs.getString("PASSWORD");
-                String lastname = rs.getString("LAST_NAME");
-                String firstname = rs.getString("FIRST_NAME");
-                u = new User(userId, firstname, lastname, username, password);
+                int userId = rs.getInt("user_id");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                String firstname = rs.getString("firstName");
+                String lastname = rs.getString("lastName");
+                String dob = rs.getString("dob");
+                int isCritic = rs.getInt("isCritic");
+                int isAdmin = rs.getInt("isAdmin");
+                u = new User(userId, username, password, email, firstname, lastname, dob, isCritic, isAdmin);
             }
         } catch (SQLException e) {
             System.out.println("An error occurred in the findUserById() method: " + e.getMessage());
@@ -146,7 +158,7 @@ public class UserDao extends Dao implements UserDaoInterface {
     }
 
     @Override
-    public int addUser(String uname, String pword, String fName, String lName) {
+    public int addUser(String uname, String pword, String email, String fName, String lName, String dob, int isCrit, int isAd) {
         Connection con = null;
         PreparedStatement ps = null;
         // This will be used to hold the generated ID (i.e. the value auto-generated
@@ -159,16 +171,20 @@ public class UserDao extends Dao implements UserDaoInterface {
         try {
             con = this.getConnection();
 
-            String query = "INSERT INTO user(FIRST_NAME, LAST_NAME, USERNAME, PASSWORD) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO users(username, password, email, firstname, lastname, dob, isCritic, isAdmin) VALUES (?,?,?,?,?,?,?,?)";
 
             // Need to get the id back, so have to tell the database to return the id it generates
             // That is why we include the Statement.RETURN_GENERATED_KEYS parameter
             ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setString(1, fName);
-            ps.setString(2, lName);
-            ps.setString(3, uname);
-            ps.setString(4, pword);
+            ps.setString(1, uname);
+            ps.setString(2, pword);
+            ps.setString(3, email);
+            ps.setString(4, fName);
+            ps.setString(5, lName);
+            ps.setString(6, dob);
+            ps.setInt(7, isCrit);
+            ps.setInt(8, isAd);
 
             // Because this is CHANGING the database, use the executeUpdate method
             ps.executeUpdate();
@@ -203,8 +219,9 @@ public class UserDao extends Dao implements UserDaoInterface {
     }
 
     public static void main(String[] args) {
-        UserDao userDao = new UserDao("user_database");
-        int id = userDao.addUser("Michelle", "password", "Michelle", "Graham");
+        UserDao userDao = new UserDao("getgud");
+        int id = userDao.addUser("gdfh", "dfgdfdf", "dgssdg", "sdgsdg", "sdgdsg", "wefef", 1, 1);
         System.out.println("The new id is: " + id);
     }
+
 }
