@@ -1,7 +1,6 @@
 package daos;
 
 import business.Game;
-import business.User;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,12 +20,12 @@ public class GameDao extends Dao implements GameDaoInterface {
         super(dbName);
     }
 
-    
+    @Override
     public List<Game> findAllGames() throws IOException {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Game> games = new ArrayList<Game>();
+        List<Game> games = new ArrayList<>();
 
         try {
             //Get connection object using the methods in the super class (Dao.java)...

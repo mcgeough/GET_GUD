@@ -5,16 +5,17 @@
 package daos;
 
 import business.Game;
+import java.io.IOException;
 import java.util.List;
 
 /**
  *
  * @author mcgeo
  */
-public class GameDaoInterface {
+public interface GameDaoInterface {
 
-    public List<Game> findAllGames();
+    public List<Game> findAllGames() throws IOException;
 
-    public Game findGameById(int id);
+    public Game findGameById(int id) throws IOException;
 
 }
