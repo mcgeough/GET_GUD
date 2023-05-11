@@ -64,7 +64,6 @@ public class UserDao extends Dao implements UserDaoInterface {
         return users;     // may be empty
     }
 
-    @Override
     public User findUserByUsernamePassword(String uname, String pword) {
         Connection con = null;
         PreparedStatement ps = null;
@@ -216,12 +215,6 @@ public class UserDao extends Dao implements UserDaoInterface {
             }
         }
         return newId;
-    }
-
-    public static void main(String[] args) {
-        UserDao userDao = new UserDao("getgud");
-        int id = userDao.addUser("gdfh", "dfgdfdf", "dgssdg", "sdgsdg", "sdgdsg", "wefef", 1, 1);
-        System.out.println("The new id is: " + id);
     }
 
 }

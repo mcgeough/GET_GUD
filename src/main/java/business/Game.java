@@ -29,8 +29,7 @@ public class Game {
         this.platform = platform;
         this.base64Image = base64Image;
     }
-    
-    
+
     public int getId() {
         return id;
     }
@@ -77,6 +76,22 @@ public class Game {
 
     public void setPlatform(String platform) {
         this.platform = platform;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getBase64Image() {
+        return base64Image;
+    }
+
+    public void setBase64Image(String base64Image) {
+        this.base64Image = base64Image;
     }
 
 }

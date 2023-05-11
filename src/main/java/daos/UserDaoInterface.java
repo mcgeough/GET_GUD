@@ -6,15 +6,11 @@
 package daos;
 
 import business.User;
-import java.util.Date;
 import java.util.List;
-
 
 public interface UserDaoInterface {
 
     public List<User> findAllUsers();
-
-    public User findUserByUsernamePassword(String uname, String pword);
 
     public User findUserById(int id);
 
