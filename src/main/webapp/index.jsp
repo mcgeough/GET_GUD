@@ -8,15 +8,15 @@
 <%@page import="business.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html   >
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-        <script src="https://kit.fontawesome.com/b4672bdce5.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/b4672bdce5.js" crossorigin="anonymous"></script>
 
         <title>Get Gud Games</title>
     </head>
@@ -28,8 +28,7 @@
             <a class="navbar-brand" href="index.jsp">Home</a>
         </nav>
     </section>
-    <body class= "d+
-          3 -flex flex-column min-vh-100">
+    <body class= "d-flex flex-column min-vh-100">
         <%
             User u = (User) session.getAttribute("user");
             if (u == null) {

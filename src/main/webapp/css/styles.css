@@ -6,6 +6,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Created on : 06-Feb-2023, 18:24:28
     Author     : mcgeo
 */
+
+
 <!-- index -->
 /* The message box is shown when the user clicks on the password field */
 #message {
@@ -140,3 +142,8 @@ h1{
 }
 
 
+@media (min-width: 991.98px) {
+    main {
+        padding-left: 240px;
+    }
+}

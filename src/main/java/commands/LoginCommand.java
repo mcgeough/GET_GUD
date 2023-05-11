@@ -39,7 +39,7 @@ public class LoginCommand implements Command {
                     forwardToJsp = "index.jsp";
                     session.setAttribute("user", u);
                 } else {
-                    forwardToJsp = "loginSuccessful.jsp";
+                    forwardToJsp = "adminIndex.jsp";
                     session.setAttribute("user", u);
                 }
 

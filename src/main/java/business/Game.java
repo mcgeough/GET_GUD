@@ -9,23 +9,28 @@ package business;
  * @author mcgeo
  */
 public class Game {
-    
+
     private int id;
     private String title;
     private String genre;
     private int ageRating;
     private double price;
+    private String description;
     private String platform;
+    private String base64Image;
 
-    public Game(int id, String title, String genre, int ageRating, double price, String platform) {
+    public Game(int id, String title, String genre, int ageRating, double price, String description, String platform, String base64Image) {
         this.id = id;
         this.title = title;
         this.genre = genre;
         this.ageRating = ageRating;
         this.price = price;
+        this.description = description;
         this.platform = platform;
+        this.base64Image = base64Image;
     }
-
+    
+    
     public int getId() {
         return id;
     }
@@ -73,7 +78,5 @@ public class Game {
     public void setPlatform(String platform) {
         this.platform = platform;
     }
-    
-    
-    
+
 }
