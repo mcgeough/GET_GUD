@@ -36,7 +36,7 @@ public class LoginCommand implements Command {
                 session.setAttribute("errorMessage", error);
             } else {
                 if (u.getIsAdmin()!= 1) {
-                    forwardToJsp = "index.jsp";
+                    forwardToJsp = "viewGames.jsp";
                     session.setAttribute("user", u);
                 } else {
                     forwardToJsp = "adminIndex.jsp";

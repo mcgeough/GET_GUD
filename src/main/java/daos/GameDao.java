@@ -37,7 +37,7 @@ public class GameDao extends Dao implements GameDaoInterface {
             //Using a PreparedStatement to execute SQL...
             rs = ps.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("user_id");
+                int id = rs.getInt("id");
                 String title = rs.getString("title");
                 String genre = rs.getString("genre");
                 int ageRating = rs.getInt("ageRating");

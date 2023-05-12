@@ -20,6 +20,10 @@ public class CommandFactory {
                 case "register":
                     c = new RegisterCommand(request, response);
                     break;
+                case "logout":
+                    c = new LogoutCommand(request, response);
+                    break;
+
                 default:
                     String error = "No such action defined for this application. Please try again.";
                     c = new ErrorCommand(error, request);
