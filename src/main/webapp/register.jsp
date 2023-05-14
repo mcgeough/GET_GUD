@@ -92,7 +92,7 @@
                                             <a class="text-muted" href="#!">Forgot password?</a>
                                             <div class="d-flex align-items-center justify-content-center pb-4">
                                                 <p class="mb-0 me-2">Already have an account?
-                                                    <button type="button"  onclick="window.location.href = 'register.jsp';"class="btn btn-outline-danger">Login here</button>
+                                                    <button type="button"  onclick="window.location.href = 'login.jsp';"class="btn btn-outline-danger">Login here</button>
                                                 </p>
                                             </div>
 
